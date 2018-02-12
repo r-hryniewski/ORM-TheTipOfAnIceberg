@@ -1,4 +1,4 @@
-﻿https://docs.microsoft.com/en-us/sql/relational-databases/security/row-level-security
+﻿
 CREATE DATABASE [RowLevelSecurityPolicy-Demo]
 GO
 
