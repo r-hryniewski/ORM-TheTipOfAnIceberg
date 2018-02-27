@@ -44,7 +44,15 @@ GO
 
 CREATE SECURITY POLICY [Security].[SalesFilter]
     ADD FILTER PREDICATE [Security].[FN_SecurityPredicate](CompanyId)   
-        ON [dbo].[Employees]
+        ON [dbo].[Employees],
+	ADD BLOCK PREDICATE [Security].[FN_SecurityPredicate](CompanyId)   
+        ON [dbo].[Employees] AFTER INSERT,
+		ADD BLOCK PREDICATE [Security].[FN_SecurityPredicate](CompanyId)   
+        ON [dbo].[Employees] AFTER UPDATE,
+	ADD BLOCK PREDICATE [Security].[FN_SecurityPredicate](CompanyId)   
+        ON [dbo].[Employees] BEFORE DELETE,
+		ADD BLOCK PREDICATE [Security].[FN_SecurityPredicate](CompanyId)   
+        ON [dbo].[Employees] BEFORE UPDATE
     WITH (STATE = ON);  
 GO
 
