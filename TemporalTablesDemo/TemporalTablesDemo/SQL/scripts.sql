@@ -98,3 +98,4 @@ SELECT
 FROM [dbo].[Products] 
 FOR SYSTEM_TIME ALL
 GROUP BY [Id], [Name]
+
