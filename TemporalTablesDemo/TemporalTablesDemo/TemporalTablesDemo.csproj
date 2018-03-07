@@ -60,12 +60,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\GetProductsAsOf_Result.cs">
+      <DependentUpon>ProductsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>ProductsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductsModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Models\ProductsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProductsModel.edmx</DependentUpon>
+      <LastGenOutput>ProductsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ProductsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProductsModel.edmx</DependentUpon>
+      <LastGenOutput>ProductsModel.cs</LastGenOutput>
+    </Content>
     <Content Include="SQL\scripts.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Models\ProductsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProductsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ProductsModel.edmx.diagram">
+      <DependentUpon>ProductsModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -73,6 +73,7 @@ SELECT
 	,[Quantity]
 FROM [dbo].[Products] 
 	FOR SYSTEM_TIME AS OF '2018-02-28 21:50:14'
+GO
 
 --Results grouped and aggregated to show min/max values in given time range
 SELECT 
@@ -86,6 +87,7 @@ FROM [dbo].[Products]
 FOR SYSTEM_TIME    
 	BETWEEN '2018-02-1 00:00:00' AND '2018-02-28 23:59:59'
 GROUP BY [Id], [Name]
+GO
 
 --Same for entire lifetime of a table
 SELECT 
@@ -98,4 +100,25 @@ SELECT
 FROM [dbo].[Products] 
 FOR SYSTEM_TIME ALL
 GROUP BY [Id], [Name]
-
+GO
+--Create  Udf wrapper for SYSTEM_TIME AS OF
+CREATE FUNCTION [dbo].[GetProductsAsOf] (@pointInTime datetime)
+RETURNS
+	@result TABLE (
+		[Id] uniqueidentifier NOT NULL,
+		[Name] nvarchar(200) NOT NULL,
+		[Price] decimal(19,4) NOT NULL,
+		[Quantity] int NOT NULL)
+AS
+BEGIN
+  INSERT INTO @result
+  SELECT 
+	[Id]
+	,[Name]
+	,[Price]
+	,[Quantity]
+	FROM [dbo].[Products] 
+	FOR SYSTEM_TIME AS OF @pointInTime
+ RETURN
+END
+GO
