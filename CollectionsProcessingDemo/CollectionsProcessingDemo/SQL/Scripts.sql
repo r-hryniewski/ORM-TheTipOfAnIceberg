@@ -6,7 +6,7 @@ GO
 
 CREATE TABLE [dbo].[RawSales]
 (
-	[Id] uniqueidentifier NOT NULL 
+	[Id] uniqueidentifier NOT NULL,
 	[Amount] int NOT NULL,
 	[DateTime] datetime NOT NULL,
 	[EmployeeId] uniqueidentifier NOT NULL 
