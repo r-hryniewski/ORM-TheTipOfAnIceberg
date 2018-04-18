@@ -66,7 +66,7 @@ CREATE TABLE [dbo].[IndexedSales]
 	[Amount] int NOT NULL,
 	[DateTime] datetime NOT NULL,
 	[EmployeeId] uniqueidentifier NOT NULL 
-		CONSTRAINT [DF_[IndexedSales_EmployeeId] DEFAULT newid(),
+		CONSTRAINT [DF_IndexedSales_EmployeeId] DEFAULT newid(),
 )
 GO
 
