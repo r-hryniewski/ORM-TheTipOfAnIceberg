@@ -6,7 +6,8 @@ GO
 
 CREATE TABLE [dbo].[RawSales]
 (
-	[Id] uniqueidentifier NOT NULL,
+	[Id] uniqueidentifier NOT NULL 
+		CONSTRAINT [DF_RawSales_Id] DEFAULT newid(),
 	[Amount] int NOT NULL,
 	[DateTime] datetime NOT NULL,
 	[EmployeeId] uniqueidentifier NOT NULL 
@@ -61,7 +62,7 @@ END
 CREATE TABLE [dbo].[IndexedSales]
 (
 	[Id] uniqueidentifier NOT NULL 
-		CONSTRAINT [DF_[IndexedSales_Id] DEFAULT newid(),
+		CONSTRAINT [DF_IndexedSales_Id] DEFAULT newid(),
 	[Amount] int NOT NULL,
 	[DateTime] datetime NOT NULL,
 	[EmployeeId] uniqueidentifier NOT NULL 
